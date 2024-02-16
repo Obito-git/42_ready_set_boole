@@ -1,0 +1,16 @@
+[package]
+name = "ready_set_boole"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "adder"
+path = "src/adder.rs"
+
+[[bin]]
+name = "multiplier"
+path = "src/multiplier.rs"
+
+[dependencies]
+log = "0.4.20"
+env_logger = "0.11.2"
