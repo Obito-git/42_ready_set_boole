@@ -20,5 +20,3 @@ name = "grey_code"
 path = "src/grey_code.rs"
 
 [dependencies]
-log = "0.4.20"
-env_logger = "0.11.2"
