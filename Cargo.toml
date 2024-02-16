@@ -3,6 +3,10 @@ name = "ready_set_boole"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "ready_set_boole"
+path = "src/lib.rs"
+
 [[bin]]
 name = "adder"
 path = "src/adder.rs"
@@ -10,6 +14,10 @@ path = "src/adder.rs"
 [[bin]]
 name = "multiplier"
 path = "src/multiplier.rs"
+
+[[bin]]
+name = "grey_code"
+path = "src/grey_code.rs"
 
 [dependencies]
 log = "0.4.20"

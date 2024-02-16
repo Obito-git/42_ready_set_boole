@@ -36,35 +36,27 @@ fn visual_adder(a: u32, b: u32) -> u32 {
     result
 }
 
-#[allow(dead_code)]
-fn adder(a: u32, b: u32) -> u32 {
-    let mut carry = 0;
-    let mut result = 0;
-    let mut mask = 1;
-
-    while mask != 0 {
-        let bit_a = a & mask;
-        let bit_b = b & mask;
-
-        let sum = bit_a ^ bit_b ^ carry;
-        carry = (bit_a & bit_b) | (bit_a & carry) | (bit_b & carry);
-
-        result |= sum;
-
-        mask <<= 1;
-        carry <<= 1;
-    }
-
-    result
-}
-
 fn main() {
-    visual_adder(23, 1023);
+    if std::env::args().count() != 3 {
+        eprintln!("Usage: adder <x> <y>");
+        std::process::exit(1);
+    }
+    let x = std::env::args().nth(1).unwrap();
+    let x = x.parse::<u32>().unwrap_or_else(|_| {
+        eprintln!("Expected unsigned integer, got: {x}");
+        std::process::exit(1);
+    });
+    let y = std::env::args().nth(2).unwrap();
+    let y = y.parse::<u32>().unwrap_or_else(|_| {
+        eprintln!("Expected unsigned integer, got: {y}");
+        std::process::exit(1);
+    });
+    println!("{x} + {y} = {}", visual_adder(x, y));
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use ready_set_boole::adder;
 
     #[test]
     fn test_adder() {
